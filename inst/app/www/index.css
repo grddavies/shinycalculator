@@ -1,0 +1,10 @@
+.calcRow {
+  display: flex;
+  flex-direction: row;
+}
+
+.calcRow:after {
+  clear: both;
+  content: "";
+  display: table;
+}
