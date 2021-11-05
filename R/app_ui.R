@@ -10,6 +10,7 @@ app_ui <- function(request) {
     golem_add_external_resources(),
     # Your application UI logic
     fluidPage(
+      # theme = shinythemes::shinytheme("slate"),
       h1("ShinyCalculator"),
       column(4,
         wellPanel(
@@ -25,7 +26,7 @@ app_ui <- function(request) {
             ),
             ~ {
               div(
-                class = "calcRow",
+                class = "calc-row",
                 purrr::map(., ~mod_calc_button_ui(paste0("b", .)))
               )
             }

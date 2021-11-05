@@ -4,12 +4,12 @@ body {
   font-family: 'VT323', monospace;
 }
 
-.calcRow {
+.calc-row {
   display: flex;
   flex-direction: row;
 }
 
-.calcRow:after {
+.calc-row:after {
   clear: both;
   content: "";
   display: table;
