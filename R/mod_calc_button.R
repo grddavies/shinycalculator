@@ -14,15 +14,16 @@ mod_calc_button_ui <- function(id) {
   )
 }
 
-#' calc_button Server Functions
+#' calc_button Server Function
 #'
 #' @noRd
 mod_calc_button_server <- function(id, buttonType, callback) {
   moduleServer(id, function(input, output, session) {
     ns <- session$ns
+    callback <- rlang::enquo(callback)
     output$btnUI <- renderUI(actionButton(ns("btn"), buttonType))
     observeEvent(input$btn, {
-      eval.parent(callback)
+      rlang::eval_tidy(callback)
     })
   })
 }
