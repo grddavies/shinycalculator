@@ -15,7 +15,7 @@ app_server <- function(input, output, session) {
     )
   )
   # Divide button
-  mod_calc_button_server("b/", "÷", updateTextInput(session, "screen", value = paste0(input$screen, "/")))
+  mod_calc_button_server("b/", "\u00F7", updateTextInput(session, "screen", value = paste0(input$screen, "/")))
   mod_calc_button_server("bv", shiny::HTML("&radic;"), updateTextInput(session, "screen", value = paste0(input$screen, "sqrt(")))
   # Equals/Evaluate
   mod_calc_button_server("b=", "=", updateTextInput(session, "screen", value = tryCatch(interpret(input$screen), error = function(e){"ERROR"})))
