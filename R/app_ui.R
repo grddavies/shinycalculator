@@ -11,22 +11,29 @@ app_ui <- function(request) {
     # Your application UI logic
     fluidPage(
       h1("shinycalculator"),
-      textInput("screen", NULL),
-      # Numbers 1-9
-      purrr::map(
-        2:0,
-        ~ {
-          tagList(
-            purrr::map(. * 3 + c(1:3), ~ mod_calc_button_ui(paste0("b", .))),
-            br()
-          )
-        }
-      ),
-      # Control btns
-      mod_calc_button_ui("b*"),
-      mod_calc_button_ui("b+"),
-      mod_calc_button_ui("b0"),
-      mod_calc_button_ui("b=")
+      wellPanel(
+        textInput("screen", NULL),
+        # Numbers 1-9
+        purrr::map(
+          2:0,
+          ~ {
+            div(
+              class = "calcRow",
+              purrr::map(. * 3 + c(1:3), ~ mod_calc_button_ui(paste0("b", .))),
+              br()
+            )
+          }
+        ),
+        # Control btns
+        mod_calc_button_ui("b("),
+        mod_calc_button_ui("b)"),
+        mod_calc_button_ui("b*"),
+        mod_calc_button_ui("b/"),
+        mod_calc_button_ui("b-"),
+        mod_calc_button_ui("b+"),
+        mod_calc_button_ui("b0"),
+        mod_calc_button_ui("b=")
+      )
     )
   )
 }

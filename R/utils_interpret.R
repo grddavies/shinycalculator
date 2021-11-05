@@ -8,7 +8,7 @@
 #' @return The return value from evaluating the expression
 #'
 #' @noRd
-interpret <- function(expr_str, max_length = 32, whitelist = c("/", "*", "^", "+", "sqrt")) {
+interpret <- function(expr_str, max_length = 32, whitelist = c("/", "*", "^", "+", "sqrt", "(", ")")) {
   safer_eval <- function(expr) {
     if (rlang::is_call(expr)) {
       fn_name <- rlang::call_name(expr)
