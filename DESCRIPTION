@@ -1,16 +1,17 @@
 Package: shinycalculator
-Title: An Amazing Shiny App
+Title: A caclulator in RShiny
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "firstname",
-           family = "lastname",
+    person(given = "Gethin",
+           family = "Davies",
            role = c("aut", "cre"),
-           email = "your@email.com")
-Description: What the package does (one paragraph).
-License: What license is it under?
+           email = "grd.davies@gmail.com")
+Description: Perform calculations in a Shiny app.
+License: MIT + file LICENSE
 Imports: 
     config (>= 0.3.1),
     golem (>= 0.3.1),
+    purrr,
     shiny (>= 1.6.0)
 Encoding: UTF-8
 LazyData: true
