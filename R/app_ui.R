@@ -10,7 +10,7 @@ app_ui <- function(request) {
     golem_add_external_resources(),
     # Your application UI logic
     fluidPage(
-      h1("shinycalculator"),
+      h1("ShinyCalculator"),
       column(4,
         wellPanel(
           textInput("screen", NULL, width = "200px"),
