@@ -21,7 +21,7 @@ mod_calc_button_server <- function(id, buttonType, callback) {
   moduleServer(id, function(input, output, session) {
     ns <- session$ns
     callback <- rlang::enquo(callback)
-    output$btnUI <- renderUI(actionButton(ns("btn"), buttonType))
+    output$btnUI <- renderUI(actionButton(ns("btn"), buttonType, width = "50px"))
     observeEvent(input$btn, {
       rlang::eval_tidy(callback)
     })

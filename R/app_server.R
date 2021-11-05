@@ -7,7 +7,7 @@
 app_server <- function(input, output, session) {
   # Buttons that write what they say on the tin
   purrr::map(
-    c(0:9, "*", "+", "-", ")", "("),
+    c(0:9, "*", "+", "-", ")", "(", "."),
     ~ mod_calc_button_server(
       id = paste0("b", .),
       buttonType = .,
@@ -16,6 +16,9 @@ app_server <- function(input, output, session) {
   )
   # Divide button
   mod_calc_button_server("b/", "÷", updateTextInput(session, "screen", value = paste0(input$screen, "/")))
+  mod_calc_button_server("bv", shiny::HTML("&radic;"), updateTextInput(session, "screen", value = paste0(input$screen, "sqrt(")))
   # Equals/Evaluate
   mod_calc_button_server("b=", "=", updateTextInput(session, "screen", value = (interpret(input$screen))))
+  # Clear
+  mod_calc_button_server("bC", "C", updateTextInput(session, "screen", value = ""))
 }
