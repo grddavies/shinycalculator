@@ -6,33 +6,11 @@
 #' @noRd
 app_ui <- function(request) {
   tagList(
-    # Leave this function for adding external resources
     golem_add_external_resources(),
-    # Your application UI logic
     fluidPage(
       # theme = shinythemes::shinytheme("slate"),
       h1("ShinyCalculator"),
-      column(4,
-        wellPanel(
-          textInput("screen", NULL, width = "200px"),
-          # Buttonpad Layout
-          purrr::map(
-            list(
-              list("C", "(", ")", "/"),
-              list(7, 8, 9, "*"),
-              list(4, 5, 6, "-"),
-              list(1, 2, 3, "+"),
-              list("v", 0, ".", "=")
-            ),
-            ~ {
-              div(
-                class = "calc-row",
-                purrr::map(., ~mod_calc_button_ui(paste0("b", .)))
-              )
-            }
-          )
-        )
-      )
+      mod_calculator_ui("calculator")
     )
   )
 }
