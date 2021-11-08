@@ -7,7 +7,7 @@
 interpret(
   expr_str,
   max_length = 32,
-  whitelist = c("/", "*", "^", "+", "sqrt", "(", ")")
+  whitelist = c("/", "*", "^", "+", "-", "sqrt", "(", ")")
 )
 }
 \arguments{
@@ -15,8 +15,14 @@ interpret(
 
 \item{max_length}{hard limit on expression string length}
 
-\item{whitelist}{list or character vector functions allowed in \code{expr}}
+\item{whitelist}{list or character vector functions allowed in \code{expr_str}}
+}
+\value{
+The return value after safely evaluating the expression
 }
 \description{
 A utility to interpret calculator input
+}
+\references{
+https://community.rstudio.com/t/secure-way-to-accept-user-input-for-shiny-apps/13554
 }
