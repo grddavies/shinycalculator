@@ -14,3 +14,7 @@ body {
   content: "";
   display: table;
 }
+
+.calc-outer {
+  width: 240px;
+}

@@ -9,8 +9,15 @@ app_ui <- function(request) {
     golem_add_external_resources(),
     fluidPage(
       # theme = shinythemes::shinytheme("slate"),
-      h1("ShinyCalculator"),
-      mod_calculator_ui("calculator")
+      fluidRow(
+        column(
+          width = 4,
+          offset = 4,
+          align = "center",
+          h1("ShinyCalculator"),
+          mod_calculator_ui("calculator")
+        )
+      )
     )
   )
 }

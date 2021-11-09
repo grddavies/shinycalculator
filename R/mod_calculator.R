@@ -10,26 +10,24 @@
 mod_calculator_ui <- function(id) {
   ns <- NS(id)
   tagList(
-    column(
-      4,
-      wellPanel(
-        textInput(ns("screen"), NULL, width = "200px"),
-        # Buttonpad Layout
-        purrr::map(
-          list(
-            list("C", "(", ")", "/"),
-            list(7, 8, 9, "*"),
-            list(4, 5, 6, "-"),
-            list(1, 2, 3, "+"),
-            list("v", 0, ".", "=")
-          ),
-          ~ {
-            div(
-              class = "calc-row",
-              purrr::map(., ~ mod_calc_button_ui(ns(paste0("b", .))))
-            )
-          }
-        )
+    wellPanel(
+      class = "calc-outer",
+      textInput(ns("screen"), NULL, width = "200px"),
+      # Buttonpad Layout
+      purrr::map(
+        list(
+          list("C", "(", ")", "/"),
+          list(7, 8, 9, "*"),
+          list(4, 5, 6, "-"),
+          list(1, 2, 3, "+"),
+          list("v", 0, ".", "=")
+        ),
+        ~ {
+          div(
+            class = "calc-row",
+            purrr::map(., ~ mod_calc_button_ui(ns(paste0("b", .))))
+          )
+        }
       )
     )
   )
@@ -54,7 +52,9 @@ mod_calculator_server <- function(id) {
     mod_calc_button_server("b/", "\u00F7", updateTextInput(session, "screen", value = paste0(input$screen, "/")))
     mod_calc_button_server("bv", HTML("&radic;"), updateTextInput(session, "screen", value = paste0(input$screen, "sqrt(")))
     # Equals/Evaluate
-    mod_calc_button_server("b=", "=", updateTextInput(session, "screen", value = tryCatch(interpret(input$screen), error = function(e){"ERROR"})))
+    mod_calc_button_server("b=", "=", updateTextInput(session, "screen", value = tryCatch(interpret(input$screen), error = function(e) {
+      "ERROR"
+    })))
     # Clear
     mod_calc_button_server("bC", "C", updateTextInput(session, "screen", value = ""))
   })
