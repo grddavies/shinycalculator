@@ -54,7 +54,7 @@ mod_calculator_server <- function(id) {
     # Equals/Evaluate
     mod_calc_button_server("b=", "=", updateTextInput(session, "screen", value = tryCatch(interpret(input$screen), error = function(e) {
       "ERROR"
-    })))
+    })), class = "btn-warning")
     # Clear
     mod_calc_button_server("bC", "C", updateTextInput(session, "screen", value = ""))
   })
